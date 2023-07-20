@@ -78,7 +78,7 @@ For more information about YouTube API quota [click here](https://developers.goo
 ![image](https://github.com/Haunter56/SB-YT-Subscribers/assets/107263697/cc6111ad-ded1-413a-a3b8-0f4d587c2f64)
 
 
-- Import the Stremaer.Bot code with one action
+- Import the [Streamer.Bot code](https://github.com/Haunter56/SB-YT-Subscribers/blob/main/YT_subscriber_list.sb) with one action
 - Go into the Execute Code sub-action (double-click it) and click `Compile`
 
  ![image](https://github.com/Haunter56/SB-YT-Subscribers/assets/107263697/fb6cf54f-2136-4d8f-b1d2-e225949cd58d)
