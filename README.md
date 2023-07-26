@@ -126,6 +126,7 @@ Something I like to do is set a timed action that is enabled when my broadcast s
 
 - Create a new action that just enables the Subscriber List Timed action (I called mine “Enable Subscriber API Action”)
 - Then Create a new timed action in `Settings` > `Timed Actions`
+- Assign the "Enable Subscriber API Action" to that timer (see screenshot)
 
  ![image](https://github.com/Haunter56/SB-YT-Subscribers/assets/107263697/3e92b975-fd27-466f-8fb3-ad9cd91b549c)
 - Go back to your action > `New sub-action` > `Core` > `Timers` > `Set Timer State`
@@ -134,9 +135,10 @@ Something I like to do is set a timed action that is enabled when my broadcast s
 - Now add one to disable the delay timer
 
  ![image](https://github.com/Haunter56/SB-YT-Subscribers/assets/107263697/a1e42b65-54e5-42e6-b9ff-6a5194334898)
-- Add one to enable the subscriber list timer
+- Add one to enable the Subscriber List Timer
 
- ![image](https://github.com/Haunter56/SB-YT-Subscribers/assets/107263697/3e0116f3-a770-46d2-94bc-2444ac296c28)
+![image](https://github.com/Haunter56/SB-YT-Subscribers/assets/107263697/da1338d6-bc96-4955-91c3-d6332153fe23)
+
 - If you don’t have one already, create an action called `Broadcast Started Action`
 - Create a sub-action to enable the `Subscriber List Delay` timer
 
