@@ -143,8 +143,14 @@ Something I like to do is set a timed action that is enabled when my broadcast s
 - Create a sub-action to enable the `Subscriber List Delay` timer
 
  ![image](https://github.com/Haunter56/SB-YT-Subscribers/assets/107263697/450a4ef2-1cab-4bbb-a71c-51906ad6195a)
-- Lastly assign the broadcast started action to your `Broadcast Started` Event - `Platforms` > `YouTube` > `Broadcast Events` > `Broadcast Started`
-- Then go into your timed actions and disable the two subscriber list timers you just created. When you go live, it will enable the delay timer and then it won’t check for new subscribers until that delay is over. You can set it to whatever amount of time you want, but I set mine for 180 seconds (3 minutes) in the screenshot. You will want to add more time if you have a stream starting soon screen or something.
+- Then assign the broadcast started action to your `Broadcast Started` Event - `Platforms` > `YouTube` > `Broadcast Events` > `Broadcast Started`
+
+- If you don’t have one already, create an action called `Broadcast Ended Action`
+- Create a sub-action to disable the `Subscriber List Timer` timer
+![image](https://github.com/Haunter56/SB-YT-Subscribers/assets/107263697/228e273b-299d-4677-babc-4101f964bbaa)
+
+
+- Then go into your timed actions and disable the two subscriber list timers you just created. When you go live, it will enable the delay timer and then it won’t check for new subscribers until that delay is over. You can set it to whatever amount of time you want, but I set mine for 180 seconds (3 minutes) in the screenshot. You will want to add more time if you have a stream starting soon screen or something. When you end your stream, the `Broadcast Ended Action` will stop the timer so that it doesn't keep using your quota.
 
  ![image](https://github.com/Haunter56/SB-YT-Subscribers/assets/107263697/d74fd8fe-17bd-4d4e-b674-8e3af334f951)
 - Now, every time someone new subscribes, it will run the Subscriber Alert action you just created, so you can put whatever you want in that alert action
