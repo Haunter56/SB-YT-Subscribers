@@ -149,6 +149,7 @@ Something I like to do is set a timed action that is enabled when my broadcast s
  ![image](https://github.com/Haunter56/SB-YT-Subscribers/assets/107263697/d74fd8fe-17bd-4d4e-b674-8e3af334f951)
 - Now, every time someone new subscribes, it will run the Subscriber Alert action you just created, so you can put whatever you want in that alert action
 - Use `%subscriberName%` as the variable for the name of the user who subscribed for any text sources or in chat messages or whatever you like
+- Don't forget to disable any other subscriber actions or commands that you already have
 
 
 
