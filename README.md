@@ -65,28 +65,14 @@ For more information about YouTube API quota [click here](https://developers.goo
 `Google.Apis.YouTube.v3.dll`
   
 
-- Add these references from the default .Net Location
 
-`mscorlib.dll`
-
-`System.dll`
-
-`System.Core.dll`
-
-`System.Runtime.dll`
-
-![image](https://github.com/Haunter56/SB-YT-Subscribers/assets/107263697/cc6111ad-ded1-413a-a3b8-0f4d587c2f64)
-
-
-- Import the [Streamer.Bot code](https://github.com/Haunter56/SB-YT-Subscribers/blob/main/YT_subscriber_list.sb) with one action
-- Go into the Execute Code sub-action (double-click it) and click `Compile`
+- Import the [Streamer.Bot code](https://github.com/Haunter56/SB-YT-Subscribers/blob/main/YT_subscriber_list.sb) with 3 actions
+- Find the "YouTube API - Get Subscriber List" action and go into the Execute Code sub-action (double-click it) and click `Compile`
 
  ![image](https://github.com/Haunter56/SB-YT-Subscribers/assets/107263697/fb6cf54f-2136-4d8f-b1d2-e225949cd58d)
 - Make sure it compiled successfully then click `Save and Close`.
-- Go to Hot Keys and create a hot-key with the new imported action
 
- ![image](https://github.com/Haunter56/SB-YT-Subscribers/assets/107263697/60a19687-95dc-4e84-906f-1bc9de4c530e)
-- Now activate the hot key to run the subscriber list action. It will have an authorization page in your default browser pop up.
+Now click on the "Test" trigger. It will have an authorization page in your default browser pop up.
 - **Make sure to select your YouTube channel account/Brand account here** The account you select here is the account it will use to get your subscribers
 
  ![image](https://github.com/Haunter56/SB-YT-Subscribers/assets/107263697/0a4a73c6-0a85-4b77-b46d-b7ed6214f9df)
@@ -104,9 +90,10 @@ For more information about YouTube API quota [click here](https://developers.goo
 - If not, then you will need to check your log file to see why it didn't run or connect.
 
 ## Streamer.Bot Action Setup
-- go into the C# code again and delete the `//` on line 60
+- go into the C# code again and delete the `//` on line 65
 
- ![image](https://github.com/Haunter56/SB-YT-Subscribers/assets/107263697/6dc98b64-23d3-4996-9d2b-0c205d003418)
+![image](https://github.com/Haunter56/SB-YT-Subscribers/assets/107263697/c59cb3ba-a55a-485b-9a16-f978f31ba1b3)
+
 - Then create an action for the alert when someone new subscribes to your channel *Make sure to put it in a blocking queue*. You can have it be something very simple like just sending a message to chat or playing a sound to start.
 - Next, copy the action ID from the action you just created
 
@@ -116,44 +103,26 @@ For more information about YouTube API quota [click here](https://developers.goo
  ![image](https://github.com/Haunter56/SB-YT-Subscribers/assets/107263697/a457b2d4-ef2a-41d9-b5f8-a62138e57eff)
 - In order for this to monitor your subscriber list, you will need to create a timed action in `Settings` > `Timed Actions` then Right-click and > `Add`
 
- ![image](https://github.com/Haunter56/SB-YT-Subscribers/assets/107263697/90a5f995-6648-4e88-8d87-66d05a1a48f1)
-- Then it will check your subscribers every 15 seconds
+
+- Once you link it to the Timed Action trigger in the "Get Subscriber List" action, it will check your subscribers every X seconds
 
 ## Streamer.Bot Timers Setup
 Each time the action runs it uses part of your YouTube quota, as long as you aren’t streaming for too long or have the interval to low, or leave Streamer.Bot open and the action running all day while not streaming, you should be fine.
 
 Something I like to do is set a timed action that is enabled when my broadcast starts. This way the alerts go off for anyone who subscribed while I was not live streaming.
 
-- Create a new action that just enables the Subscriber List Timed action (I called mine “Enable Subscriber API Action”)
-- Then Create a new timed action in `Settings` > `Timed Actions`
-- Assign the "Enable Subscriber API Action" to that timer (see screenshot)
-
- ![image](https://github.com/Haunter56/SB-YT-Subscribers/assets/107263697/3e92b975-fd27-466f-8fb3-ad9cd91b549c)
-- Go back to your action > `New sub-action` > `Core` > `Timers` > `Set Timer State`
-
- ![image](https://github.com/Haunter56/SB-YT-Subscribers/assets/107263697/fed5b100-8dad-48b3-ab4e-24365c83b531)
-- Now add one to disable the delay timer
-
- ![image](https://github.com/Haunter56/SB-YT-Subscribers/assets/107263697/a1e42b65-54e5-42e6-b9ff-6a5194334898)
-- Add one to enable the Subscriber List Timer
-
-![image](https://github.com/Haunter56/SB-YT-Subscribers/assets/107263697/da1338d6-bc96-4955-91c3-d6332153fe23)
-
-- If you don’t have one already, create an action called `Broadcast Started Action`
-- Create a sub-action to enable the `Subscriber List Delay` timer
-
- ![image](https://github.com/Haunter56/SB-YT-Subscribers/assets/107263697/450a4ef2-1cab-4bbb-a71c-51906ad6195a)
-- Then assign the broadcast started action to your `Broadcast Started` Event - `Platforms` > `YouTube` > `Broadcast Events` > `Broadcast Started`
-
-- If you don’t have one already, create an action called `Broadcast Ended Action`
-- Create a sub-action to disable the `Subscriber List Timer` timer
-
-![image](https://github.com/Haunter56/SB-YT-Subscribers/assets/107263697/228e273b-299d-4677-babc-4101f964bbaa)
+- Create a new timed action in `Settings` > `Timed Actions`
+- Assign the new Timed Action to the Timed Action trigger in the "YouTube API - Get Subscriber List" action
 
 
-- Then go into your timed actions and disable the two subscriber list timers you just created. When you go live, it will enable the delay timer and then it won’t check for new subscribers until that delay is over. You can set it to whatever amount of time you want, but I set mine for 180 seconds (3 minutes) in the screenshot. You will want to add more time if you have a stream starting soon screen or something. When you end your stream, the `Broadcast Ended Action` will stop the timer so that it doesn't keep using your quota.
+- Go to the "Disable API" and "Enable API" actions.
+- In each one make sure the correct timer is selected.
 
- ![image](https://github.com/Haunter56/SB-YT-Subscribers/assets/107263697/d74fd8fe-17bd-4d4e-b674-8e3af334f951)
+
+
+- Then go into your timed actions and disable the subscriber list timer you just created. When you go live, it will enable the timer to start after 60 seconds. You can set the delay to whatever amount of time you wantYou will want to add more time if you have a stream starting soon screen or something. When you end your stream, the `Broadcast Ended` trigger will stop the timer so that it doesn't keep using your quota.
+
+
 - Now, every time someone new subscribes, it will run the Subscriber Alert action you just created, so you can put whatever you want in that alert action
 - Use `%subscriberName%` as the variable for the name of the user who subscribed for any text sources or in chat messages or whatever you like
 - Don't forget to disable any other subscriber actions or commands that you already have
